@@ -7,6 +7,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build Android APK
@@ -62,4 +65,24 @@ jobs:
           name: cocktail-recipes-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 14
+
+      - name: Create or Update GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v1.0.${{ github.run_number }}"
+          name: "Cocktail Recipes Release v1.0.${{ github.run_number }}"
+          body: |
+            Automatic build of the native Android application.
+            
+            **Commit Info:**
+            - Message: ${{ github.event.head_commit.message }}
+            - Author: ${{ github.event.head_commit.author.name }}
+            - Commit: `${{ github.sha }}`
+          draft: false
+          prerelease: false
+          files: |
+            android/app/build/outputs/apk/debug/app-debug.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
