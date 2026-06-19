@@ -45,6 +45,7 @@ npm start
 ```
 This serves the application optimally from `dist/server.cjs` binding on port `3000`.
 
+
 ### Code Check (Linting)
 Checks the TypeScript codebase for any type errors or safety warnings:
 ```bash
