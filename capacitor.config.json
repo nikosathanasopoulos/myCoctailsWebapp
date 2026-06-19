@@ -1,0 +1,5 @@
+{
+  "appId": "com.mycoctailswebapp.app",
+  "appName": "Cocktail Recipes",
+  "webDir": "dist"
+}
