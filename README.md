@@ -2,6 +2,10 @@
 
 A beautifully crafted, high-performance interactive cocktail recipe browser. It matches home cabinet ingredients with classic recipes, helping you craft delicious drinks step-by-step.
 
+[![Playwright Tests](https://github.com/nikosathanasopoulos/myCoctailsWebapp/actions/workflows/playwright.yml/badge.svg)](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/playwright.yml)
+[![k6 Performance Tests](https://github.com/nikosathanasopoulos/myCoctailsWebapp/actions/workflows/k6-performance.yml/badge.svg)](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/k6-performance.yml)
+[![Deploy to GitHub Pages](https://github.com/nikosathanasopoulos/myCoctailsWebapp/actions/workflows/deploy.yml/badge.svg)](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/deploy.yml)
+[![Build Android APK](https://github.com/nikosathanasopoulos/myCoctailsWebapp/actions/workflows/android-build.yml/badge.svg)](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/android-build.yml)
 ## Prerequisites
 
 - **Node.js**: `v20.x` or `v22.x` (Recommended)
@@ -50,6 +54,22 @@ Checks the TypeScript codebase for any type errors or safety warnings:
 ```bash
 npm run lint
 ```
+
+### Git Pre-Commit Hooks
+We use the **pre-commit** framework (configured in `.pre-commit-config.yaml`) to enforce a high standard of code quality on every commit. The hooks run the following verification checks:
+1. **NPM Lint Check** — runs `npm run lint` on source files to ensure type safety and syntax consistency.
+2. **NPM Build Check** — runs `npm run build` to ensure the compilation succeeds before changes are committed.
+
+To configure and install the hooks locally:
+```bash
+# Install pre-commit (if not already installed)
+pip install pre-commit
+
+# Install the hooks in your local .git directory
+pre-commit install
+```
+
+Commit operations will be safely blocked if any step fails, keeping broken code out of the repository.
 
 ---
 

@@ -1,0 +1,18 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: local
+    hooks:
+      - id: npm-lint
+        name: NPM Lint Check
+        entry: npm run lint
+        language: system
+        pass_filenames: false
+        files: \.(js|jsx|ts|tsx)$
+
+      - id: npm-build
+        name: NPM Build Check
+        entry: npm run build
+        language: system
+        pass_filenames: false
+        files: \.(js|jsx|ts|tsx|json|html|css)$
