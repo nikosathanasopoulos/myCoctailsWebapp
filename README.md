@@ -53,6 +53,46 @@ npm run lint
 
 ---
 
+## Functional Testing (Playwright)
+
+We use **Playwright** for End-to-End (E2E) functional tests to verify core user flows such as bilingual switching, search/filtering, spotlight updating, and bar cabinet cabinet interactions.
+
+### Playwright Prerequisites
+
+Before running the test suite for the first time, make sure to install the browser executables required by Playwright:
+
+```bash
+npx playwright install chromium --with-deps
+```
+
+### Running Tests Locally
+
+You can execute your tests in two modes:
+
+#### 1. Headless Native Run (CI equivalent)
+This command boots up the local production server and runs the entire test suite in headless mode using Chromium:
+
+```bash
+npm run test:e2e
+```
+
+#### 2. Interactive UI Mode
+To develop and debug tests with full step-by-step timetravel debugging, visual assertions, and live preview of the interactive state:
+
+```bash
+npx playwright test --ui
+```
+
+### Continuous Integration (CI)
+
+A dedicated GitHub Actions workflow (`.github/workflows/playwright.yml`) is set up to automatically run the test suite on:
+- Every Pull Request directed towards the `main` branch.
+- Every direct merge or push to the `main` branch.
+
+In the case of workflow failures, detailed visual reports are preserved and provided as zipped workflow artifacts for diagnostic inspection.
+
+---
+
 ## Deploying to GitHub Pages
 
 This app is fully compatible with static hosting (GitHub Pages). An automated **GitHub Actions Workflow** (`.github/workflows/deploy.yml`) is included to publish the application seamlessly.
