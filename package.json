@@ -10,6 +10,7 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "test:e2e": "playwright test",
+    "test:perf": "k6 run performance/load-test.js",
     "cap:sync": "npx cap sync",
     "cap:open": "npx cap open android",
     "android:build": "npm run build && npx cap sync && cd android && ./gradlew assembleDebug"
@@ -37,7 +38,8 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "@types/k6": "^0.54.0"
   },
   "engines": {
     "node": ">=20.0.0"
